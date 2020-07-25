@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
-from google.cloud import storage
+from google.cloud import vision
+import io
 from os import environ
 
+path = './memes/en/char-spag.png'
+
 if __name__ == '__main__':
-    # If you don't specify credentials when constructing the client, the
-    # client library will look for credentials in the environment.
-    storage_client = storage.Client()
+    vision_client = vision.ImageAnnotatorClient()
+
+    with io.open(path, 'rb') as image_file:
+        content = image_file.read()
+
+    # image = vision.types.Image(content=content)
+    # response = client.text_detection(image=image)
+    # texts = response.text_annotations
 
     # Make an authenticated API request
-    buckets = list(storage_client.list_buckets())
-    print(buckets)
     print(environ.get('TARGET_LANG', 'sa marche pa'))
     print("y se passe rien ici dans le fond...")

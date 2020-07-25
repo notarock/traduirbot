@@ -6,7 +6,6 @@ sa tradui
 
 Installe `pipenv` et fait `pipenv install`. Après ça, `pipenv run python3 src/main.py`
 
-
 ### Authentification avec Google cloud
 
 Pour que ça fonctionne, il faut avoir un projet Google cloud platform actif.
