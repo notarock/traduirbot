@@ -2,10 +2,12 @@
 
 import sys
 
-from google.cloud import translate_v2 as translate
 from file_detection import detect
+from wand.drawing import Drawing
+from wand.color import Color
+from google.cloud import translate_v2 as translate
+from wand.image import Image
 
-PATH = './memes/en/char-spag.png'
 
 def translate_to(source_text, target_lang):
     """
@@ -26,7 +28,28 @@ if __name__ == '__main__':
 
     print("Translating " + path)
 
-    text = detect(PATH)
-    print('source: ' + text)
-    print('en :' + translate_to(text, 'fr'))
-    print('es :' + translate_to(text, 'es'))
+    text = detect(path)
+    french_text = translate_to(text, 'fr')
+    print("fr: " + french_text)
+
+    x1 = 50
+    y1 = 50
+    x2 = 450
+    y2 = 450
+
+    with Image(filename=path) as img:
+        with Drawing() as draw:
+            draw.stroke_color = Color('white')
+            draw.fill_color = Color('white')
+            draw.rectangle(left=x1, top=y1, right=x2, bottom=y2)
+            draw(img)
+
+        with Drawing() as draw:
+            draw.font = 'wandtests/assets/League_Gothic.otf'
+            draw.font_size = 40
+            draw.text(50, 50, french_text)
+            draw.draw(img)
+
+        img.save(filename='test.png')
+
+    print("um-k, sounds like im done.")

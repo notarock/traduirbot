@@ -9,6 +9,8 @@ verify_ssl = true
 google-cloud-vision = "*"
 google-cloud-storage = "*"
 google-cloud-translate = "*"
+magickwand = "*"
+wand = "*"
 
 [requires]
 python_version = "3.8"
