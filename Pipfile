@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 google-cloud-vision = "*"
 google-cloud-storage = "*"
+google-cloud-translate = "*"
 
 [requires]
 python_version = "3.8"
