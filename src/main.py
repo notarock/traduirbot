@@ -28,14 +28,18 @@ if __name__ == '__main__':
 
     print("Translating " + path)
 
-    text = detect(path)
-    french_text = translate_to(text, 'fr')
+    api_result = detect(path)
+    french_text = translate_to(api_result.description, 'fr')
     print("fr: " + french_text)
 
-    x1 = 50
-    y1 = 50
-    x2 = 450
-    y2 = 450
+    vertices = api_result.bounding_poly.vertices
+
+    print(vertices)
+
+    x1 = vertices[0].x
+    y1 = vertices[0].y
+    x2 = vertices[2].x
+    y2 = vertices[2].y
 
     with Image(filename=path) as img:
         with Drawing() as draw:
@@ -47,7 +51,7 @@ if __name__ == '__main__':
         with Drawing() as draw:
             draw.font = 'wandtests/assets/League_Gothic.otf'
             draw.font_size = 40
-            draw.text(50, 50, french_text)
+            draw.text(x1, y1, french_text)
             draw.draw(img)
 
         img.save(filename='test.png')

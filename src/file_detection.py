@@ -31,4 +31,4 @@ def detect(path):
             'https://cloud.google.com/apis/design/errors'.format(
                 response.error.message))
 
-    return texts[0].description
+    return texts[0]
