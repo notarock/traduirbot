@@ -25,12 +25,13 @@ def translate_to(source_text, target_lang):
 
 if __name__ == '__main__':
     path = sys.argv[1]
+    target_lang = sys.argv[2]
 
     print("Translating " + path)
 
     api_result = detect(path)
-    french_text = translate_to(api_result.description, 'fr')
-    print("fr: " + french_text)
+    source_text = translate_to(api_result.description, target_lang)
+    print("source text: " + source_text)
 
     vertices = api_result.bounding_poly.vertices
 
@@ -50,8 +51,8 @@ if __name__ == '__main__':
 
         with Drawing() as draw:
             draw.font = 'wandtests/assets/League_Gothic.otf'
-            draw.font_size = 40
-            draw.text(x1, y1, french_text)
+            draw.font_size = 20
+            draw.text(x1, y1, source_text)
             draw.draw(img)
 
         img.save(filename='test.png')
