@@ -6,6 +6,7 @@ from wand.drawing import Drawing
 from wand.image import Image
 import urllib.parse
 
+
 def write_on_image(filename, detected_text, target_lang, output_file):
     with Image(filename=filename) as img:
         texts = detected_text
@@ -38,7 +39,11 @@ def write_on_image(filename, detected_text, target_lang, output_file):
                 with Drawing() as draw:
                     draw.stroke_color = Color('white')
                     draw.fill_color = Color('white')
-                    draw.rectangle(left=rec_left, top=rec_top, right=rec_right, bottom=rec_bottom)
+                    draw.rectangle(
+                        left=rec_left,
+                        top=rec_top,
+                        right=rec_right,
+                        bottom=rec_bottom)
                     draw(img)
 
                 with Drawing() as draw:
@@ -46,7 +51,7 @@ def write_on_image(filename, detected_text, target_lang, output_file):
                     draw.font_size = font_size
                     draw.text(x_1, y_2, translated)
                     draw.draw(img)
-            except:
+            except BaseException:
                 pass
 
         img.save(filename=output_file)
