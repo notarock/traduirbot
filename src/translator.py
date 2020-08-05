@@ -13,4 +13,5 @@ def translate_to(source_text, target_lang):
     translate_client = translate.Client()
     result = translate_client.translate(
         source_text, target_language=target_lang)
-    return result['translatedText']
+
+    return result['translatedText'].replace("&#39;", "'")

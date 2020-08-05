@@ -4,7 +4,7 @@ from translator import translate_to
 from wand.color import Color
 from wand.drawing import Drawing
 from wand.image import Image
-
+import urllib.parse
 
 def write_on_image(filename, detected_text, target_lang, output_file):
     with Image(filename=filename) as img:
