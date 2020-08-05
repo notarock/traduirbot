@@ -10,7 +10,7 @@ if __name__ == '__main__':
     target_lang = sys.argv[2]
     api_result = detect(path)
 
-    write_on_image(path, api_result, 'fr', 'out.png')
+    write_on_image(path, api_result, target_lang, 'out.png')
 
     print("um-k, sounds like im done.")
     sys.exit(0)
