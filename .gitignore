@@ -5,3 +5,5 @@ tmp/
 
 .env
 gcloud-auth.json
+
+memes/
