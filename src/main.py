@@ -12,5 +12,6 @@ if __name__ == '__main__':
 
     write_on_image(path, api_result, target_lang, 'out.png')
 
-    print("um-k, sounds like im done.")
+    print('fini')
+
     sys.exit(0)
