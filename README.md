@@ -29,7 +29,9 @@ This will come later, v2 maybe
   - [ ] Keep translated memes in a user-friendly place
 - [ ] Analytics
   - [ ] Keep track of text on memes and user engagement
-  - [ Keep track of top posts]
+  - [ ] Keep track of top posts
+- [ ] Text improvement
+  - [ ] Figure out text rotation when words are crooked
  
 
 # Anglais (yeet)
