@@ -1,6 +1,26 @@
 # Traduir
 
----
+## Roadmap
+
+- [x] Get text on image
+- [x] Translate words on image
+- [x] Put translated words on the image
+- [ ] Readable meme text  
+  - [x] Put white under text for readability
+  - [ ] Use a font suitable for memes (Black with white borders maybe?)
+  - [ ] Figure out a way to put words on the same line for readability
+  - [ ] Blur area under text instead of an ugly white square
+- [ ] Word dictionnary
+  - [ ] Ability to replace some words with common words we use
+  - [ ] Let page admins edit the list, no manual update needed to apply changes
+- [ ] Post to facebook
+  - [ ] Post picture on a facebook page
+  - [ ] Have a bank of images to post periodicaly on the page
+  - [ ] Maybe read DMs and send back translated memes?
+- [ ] Web interface ?
+  - [ ] Let some users upload pics to translated them instantly
+  - [ ] Password-protected translation API
+ 
 
 # Anglais (yeet)
 
