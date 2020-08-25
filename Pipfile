@@ -10,7 +10,6 @@ google-cloud-vision = "*"
 google-cloud-storage = "*"
 google-cloud-translate = "*"
 magickwand = "*"
-wand = "*"
 pillow = "*"
 
 [requires]

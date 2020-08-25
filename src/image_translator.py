@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import math
 import sys
 import os
 
@@ -52,9 +53,11 @@ def write_on_image(filename, detected_text, target_lang, output_file):
                 img_ctx = img_ctx.filter(ImageFilter.BLUR)
             img.paste(img_ctx, box)
 
-            # get a font
-            scale = min(len(text.description) / len(translated), 1)
-            font_size = round((y_2 - y_1) * scale)
+            area = (x_2 - x_1) * (y_2 - y_1)
+            font_size = round(math.sqrt(area / len(translated)) * 1.25)
+
+            print(font_size)
+
             font = ImageFont.truetype(FONT_PATH, font_size)
 
             # get a drawing context
