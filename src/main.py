@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+"""
+Entry point for the CLi implementation of traduirbot
+"""
 
 import sys
 

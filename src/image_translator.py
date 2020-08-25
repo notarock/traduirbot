@@ -1,57 +1,61 @@
 #!/usr/bin/env python3
 
 from translator import translate_to
-from wand.color import Color
-from wand.drawing import Drawing
-from wand.image import Image
-import urllib.parse
+# from wand.color import Color
+# from wand.drawing import Drawing
+# from wand.image import Image
+from PIL import Image, ImageFilter, ImageDraw, ImageFont
 
 
 def write_on_image(filename, detected_text, target_lang, output_file):
-    with Image(filename=filename) as img:
-        texts = detected_text
-        texts.pop(0)
+    img = Image.open(filename)
 
-        for text in texts:
-            translated = translate_to(text.description, target_lang)
-            print(translated)
+    texts = detected_text
+    texts.pop(0)
 
-            vertices = (['({},{})'.format(vertex.x, vertex.y)
-                         for vertex in text.bounding_poly.vertices])
-            print('bounds: {}'.format(','.join(vertices)))
+    for text in texts:
+        translated = translate_to(text.description, target_lang)
+        print(translated)
 
-            x_1 = text.bounding_poly.vertices[0].x
-            x_2 = text.bounding_poly.vertices[2].x
-            y_1 = text.bounding_poly.vertices[0].y
-            y_2 = text.bounding_poly.vertices[2].y
+        vertices = (['({},{})'.format(vertex.x, vertex.y)
+                    for vertex in text.bounding_poly.vertices])
+        print('bounds: {}'.format(','.join(vertices)))
 
-            scale = min(len(text.description) / len(translated), 1)
-            font_size = round((y_2 - y_1) * scale)
+        x_1 = text.bounding_poly.vertices[0].x
+        x_2 = text.bounding_poly.vertices[2].x
+        y_1 = text.bounding_poly.vertices[0].y
+        y_2 = text.bounding_poly.vertices[2].y
 
-            padding = 5
+        scale = min(len(text.description) / len(translated), 1)
+        font_size = round((y_2 - y_1) * scale)
 
-            rec_left = max(x_1 - padding, 0)
-            rec_top = min(y_1 - padding, img.height)
-            rec_right = min(x_2 + padding, img.width)
-            rec_bottom = max(y_2 + padding, 0)
+        padding = 5
 
-            try:
-                with Drawing() as draw:
-                    draw.stroke_color = Color('white')
-                    draw.fill_color = Color('white')
-                    draw.rectangle(
-                        left=rec_left,
-                        top=rec_top,
-                        right=rec_right,
-                        bottom=rec_bottom)
-                    draw(img)
+        rec_left = max(x_1 - padding, 0)
+        rec_top = min(y_1 - padding, img.height)
+        rec_right = min(x_2 + padding, img.width)
+        rec_bottom = max(y_2 + padding, 0)
 
-                with Drawing() as draw:
-                    draw.font = 'wandtests/assets/League_Gothic.otf'
-                    draw.font_size = font_size
-                    draw.text(x_1, y_2, translated)
-                    draw.draw(img)
-            except BaseException:
-                pass
+        try:
+            box = (rec_left, rec_top, rec_right, rec_bottom)
+            img_ctx = img.crop(box)
+            # with the BLUR filter, you can blur a few
+            # times to get the effect you're seeking
+            for i in range(10):
+                img_ctx = img_ctx.filter(ImageFilter.BLUR)
+            img.paste(img_ctx, box)
 
-        img.save(filename=output_file)
+            # get a font
+            fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
+            # get a drawing context
+            d = ImageDraw.Draw(img)
+
+            # draw multiline text
+            d.multiline_text((10, 10),
+                             "Hello\nWorld",
+                             font=fnt,
+                             fill=(0, 0, 0))
+
+        except BaseException:
+            pass
+    img.save("out.png", "PNG")

@@ -11,6 +11,7 @@ google-cloud-storage = "*"
 google-cloud-translate = "*"
 magickwand = "*"
 wand = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
