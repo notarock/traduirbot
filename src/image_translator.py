@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
+import sys
+import os
+
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
 from translator import translate_to
-# from wand.color import Color
-# from wand.drawing import Drawing
-# from wand.image import Image
-from PIL import Image, ImageFilter, ImageDraw, ImageFont
 
 
 def write_on_image(filename, detected_text, target_lang, output_file):
@@ -46,16 +47,20 @@ def write_on_image(filename, detected_text, target_lang, output_file):
             img.paste(img_ctx, box)
 
             # get a font
-            fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 40)
+            dirname = os.path.dirname(__file__)
+            fontfile = os.path.join(dirname, '../resources/impact.ttf')
+            fnt = ImageFont.truetype(fontfile, font_size)
+
             # get a drawing context
             d = ImageDraw.Draw(img)
 
             # draw multiline text
-            d.multiline_text((10, 10),
-                             "Hello\nWorld",
+            d.multiline_text((rec_left, rec_top),
+                             translated,
                              font=fnt,
-                             fill=(0, 0, 0))
+                             fill=(255, 255, 255), stroke_width=1, stroke_fill=(0,0,0))
 
-        except BaseException:
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
             pass
-    img.save("out.png", "PNG")
+    img.save(output_file, "PNG")
