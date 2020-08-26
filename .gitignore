@@ -9,3 +9,5 @@ gcloud-auth.json
 memes/
 out.png
 credentials.json
+
+token.pickle

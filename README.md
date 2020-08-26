@@ -7,14 +7,14 @@ I would be happy with these for a v1
 - [x] Get text on image
 - [x] Translate words on image
 - [x] Put translated words on the image
-- [ ] Readable meme text  
+- [ ] Readable meme text 
   - [x] Put white under text for readability
   - [x] Use a font suitable for memes (Black with white borders maybe?)
   - [ ] Figure out a way to put words on the same line for readability
   - [x] Blur area under text instead of an ugly white square
-- [ ] Word dictionnary
-  - [ ] Ability to replace some words with common words we use
-  - [ ] Let page admins edit the list, no manual update needed to apply changes
+- [x] Word dictionnary
+  - [x] Ability to replace some words with common words we use
+  - [x] Let page admins edit the list, no manual update needed to apply changes
 - [ ] Post to facebook
   - [ ] Post picture on a facebook page
   - [ ] Have a bank of images to post periodicaly on the page
