@@ -2,13 +2,19 @@
 
 from google.cloud import translate_v2 as translate
 
+from dictionnary_builder import get_spreadsheet_content
+
+WORDS_DICTIONNARY = get_spreadsheet_content()
 
 def translate_to(source_text, target_lang):
     """
     Translate text to a target langage using auto-detection.
     """
-    if (source_text == "a"):
-        return "un"
+    found = WORDS_DICTIONNARY.get(source_text.lower())
+    if (found is not None):
+        print("Found word "+ source_text
+              + ', manualy translate to ' + found)
+        return found
 
     translate_client = translate.Client()
     result = translate_client.translate(

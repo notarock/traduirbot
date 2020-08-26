@@ -26,11 +26,8 @@ def write_on_image(filename, detected_text, target_lang, output_file):
 
     for text in texts:
         translated = translate_to(text.description, target_lang)
-        print(translated)
-
         vertices = (['({},{})'.format(vertex.x, vertex.y)
                      for vertex in text.bounding_poly.vertices])
-        print('bounds: {}'.format(','.join(vertices)))
 
         x_1 = text.bounding_poly.vertices[0].x
         x_2 = text.bounding_poly.vertices[2].x
@@ -55,8 +52,6 @@ def write_on_image(filename, detected_text, target_lang, output_file):
 
             area = (x_2 - x_1) * (y_2 - y_1)
             font_size = round(math.sqrt(area / len(translated)) * 1.25)
-
-            print(font_size)
 
             font = ImageFont.truetype(FONT_PATH, font_size)
 
