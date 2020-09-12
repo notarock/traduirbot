@@ -62,6 +62,7 @@ def get_spreadsheet_content():
 
     word_dict = dict([{row[0], row[1]} for row in values])
     print("Got word dictionnary.")
+    print(word_dict)
     return word_dict
 
 

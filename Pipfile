@@ -15,6 +15,7 @@ google-api-python-client = "*"
 google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 environs = "*"
+facebook-sdk = "*"
 
 [requires]
 python_version = "3.8"
