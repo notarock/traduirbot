@@ -9,24 +9,36 @@ from config import Config
 from file_detection import detect
 from image_translator import write_on_image
 
-if __name__ == '__main__':
+output_path = "/tmp/out.png"
+post = False
+
+
+def main():
+    target_lang = "fr"
+    path = sys.argv[1]
+    api_result = detect(path)
+
+    write_on_image(path, api_result, target_lang, output_path)
+
+    post = sys.argv[2]
+    # post_on_facebook(output_path)
+
+    print('fini')
+
+
+def post_on_facebook(file_path):
     fb_token = Config.get_instance().get_config('FB_ACCES_TOKEN')
     user_token = Config.get_instance().get_config('FB_USER_TOKEN')
     page_id = Config.get_instance().get_config('FB_PAGE_ID')
 
     graph = facebook.GraphAPI(access_token=user_token, version="3.0")
 
-    target_lang = "fr"
-    path = sys.argv[1]
-    api_result = detect(path)
-
-    write_on_image(path, api_result, target_lang, 'out.png')
-
     graph.put_photo(parent_object=page_id,
                     access_token=fb_token,
-                    image=open('out.png', 'rb'),
-                    message='Mon premier meme traduit par bot')
+                    image=open(output_path, 'rb'),
+                    message='meme de test')
 
-    print('fini')
 
+if __name__ == '__main__':
+    main()
     sys.exit(0)

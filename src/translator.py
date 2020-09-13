@@ -6,10 +6,13 @@ from dictionnary_builder import get_spreadsheet_content
 
 WORDS_DICTIONNARY = get_spreadsheet_content()
 
+
 def translate_to(source_text, target_lang):
     """
     Translate text to a target langage using auto-detection.
     """
+    print("trying to find " + source_text.lower() + " in")
+    print(WORDS_DICTIONNARY)
     found = WORDS_DICTIONNARY.get(source_text.lower())
     if (found is not None):
         print("Found word "+ source_text

@@ -60,8 +60,12 @@ def get_spreadsheet_content():
         warnings.warn('No data found in spreadsheet!')
         return {}
 
-    word_dict = dict([{row[0], row[1]} for row in values])
-    print("Got word dictionnary.")
+    print("rows")
+    if values[0][0] == 'en':
+        word_dict = dict([{row[0], row[1]} for row in values])
+    else:
+        word_dict = dict([{row[1], row[0]} for row in values])
+
     print(word_dict)
     return word_dict
 
