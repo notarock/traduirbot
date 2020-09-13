@@ -16,7 +16,7 @@ I would be happy with these for a v1
   - [x] Ability to replace some words with common words we use
   - [x] Let page admins edit the list, no manual update needed to apply changes
 - [ ] Post to facebook
-  - [ ] Post picture on a facebook page
+  - [x] Post picture on a facebook page
   - [ ] Have a bank of images to post periodicaly on the page
   - [ ] Maybe read DMs and send back translated memes?
 
