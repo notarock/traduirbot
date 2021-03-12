@@ -25,6 +25,26 @@ def write_on_image(filename, detected_text, target_lang, output_file):
     texts.pop(0)
 
     for text in texts:
+        x_1 = text.bounding_poly.vertices[0].x
+        x_2 = text.bounding_poly.vertices[2].x
+        y_1 = text.bounding_poly.vertices[0].y
+        y_2 = text.bounding_poly.vertices[2].y
+        padding = 5
+        try:
+            rec_left = max(x_1 - padding, 0)
+            rec_top = min(y_1 - padding, img.height)
+            rec_right = min(x_2 + padding, img.width)
+            rec_bottom = max(y_2 + padding, 0)
+            box = (rec_left, rec_top, rec_right, rec_bottom)
+            img_ctx = img.crop(box)
+            # with the BLUR filter, you can blur a few
+            # times to get the effect you're seeking
+            for i in range(10):
+                img_ctx = img_ctx.filter(ImageFilter.BLUR)
+            img.paste(img_ctx, box)
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
+    for text in texts:
         translated = translate_to(text.description, target_lang)
         vertices = (['({},{})'.format(vertex.x, vertex.y)
                      for vertex in text.bounding_poly.vertices])
@@ -35,21 +55,11 @@ def write_on_image(filename, detected_text, target_lang, output_file):
         y_2 = text.bounding_poly.vertices[2].y
 
         padding = 5
-
-        rec_left = max(x_1 - padding, 0)
-        rec_top = min(y_1 - padding, img.height)
-        rec_right = min(x_2 + padding, img.width)
-        rec_bottom = max(y_2 + padding, 0)
-
         try:
-            box = (rec_left, rec_top, rec_right, rec_bottom)
-            img_ctx = img.crop(box)
-            # with the BLUR filter, you can blur a few
-            # times to get the effect you're seeking
-            for i in range(10):
-                img_ctx = img_ctx.filter(ImageFilter.BLUR)
-            img.paste(img_ctx, box)
-
+            rec_left = max(x_1, 0)
+            rec_top = min(y_1, img.height)
+            rec_right = min(x_2, img.width)
+            rec_bottom = max(y_2, 0)
             area = (x_2 - x_1) * (y_2 - y_1)
             font_size = round(math.sqrt(area / len(translated)) * 1.25)
 
