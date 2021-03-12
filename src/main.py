@@ -3,7 +3,6 @@ Entry point for the CLi implementation of traduirbot
 """
 
 import sys
-import os
 import facebook
 from config import Config
 
@@ -14,9 +13,9 @@ output_path = "/tmp/out.png"
 post = False
 
 def main():
-    target_lang = os.environ["TARGET_LANG"]
     path = sys.argv[1]
     api_result = detect(path)
+    target_lang = Config.get_instance().get_config('TARGET_LANG')
 
     write_on_image(path, api_result, target_lang, output_path)
 
@@ -30,6 +29,7 @@ def post_on_facebook(file_path):
     fb_token = Config.get_instance().get_config('FB_ACCES_TOKEN')
     user_token = Config.get_instance().get_config('FB_USER_TOKEN')
     page_id = Config.get_instance().get_config('FB_PAGE_ID')
+    target_lang = os.environ["TARGET_LANG"]
 
     graph = facebook.GraphAPI(access_token=user_token, version="3.0")
 
