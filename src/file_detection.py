@@ -13,9 +13,9 @@ def detect(path):
     vision_client = vision.ImageAnnotatorClient()
 
     with io.open(path, 'rb') as image_file:
-        content = image_file.read()
+        image_content = image_file.read()
 
-    image = vision.types.Image(content=content)
+    image = vision.types.Image(content=image_content)
 
     response = vision_client.text_detection(image=image)
     texts = response.text_annotations

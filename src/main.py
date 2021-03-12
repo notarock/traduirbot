@@ -3,6 +3,7 @@ Entry point for the CLi implementation of traduirbot
 """
 
 import sys
+import os
 import facebook
 from config import Config
 
@@ -12,15 +13,14 @@ from image_translator import write_on_image
 output_path = "/tmp/out.png"
 post = False
 
-
 def main():
-    target_lang = "fr"
+    target_lang = os.environ["TARGET_LANG"]
     path = sys.argv[1]
     api_result = detect(path)
 
     write_on_image(path, api_result, target_lang, output_path)
 
-    post = sys.argv[2]
+    # post = sys.argv[2]
     # post_on_facebook(output_path)
 
     print('fini')
