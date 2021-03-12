@@ -50,7 +50,7 @@ pipenv run python3 src/main.py memes/en/english-meme.png fr
 
 If you want this to work, you need to authenticate with Google cloud.
 
-[follow this linkg](https://cloud.google.com/docs/authentication/getting-started#linux-or-macos) to generate your `gcloud-auth.json` 
+[follow this linkg](https://cloud.google.com/docs/authentication/getting-started#linux-or-macos) to generate your `credentials.json` 
 
 # Francais (Lois 101)
 
@@ -68,4 +68,8 @@ pipenv run python3 src/main.py memes/en/english-meme.png fr
 
 Pour que ça fonctionne, il faut avoir un projet Google cloud platform actif.
 
-En gros, suis [ce lien là](https://cloud.google.com/docs/authentication/getting-started#linux-or-macos) pour générer ton fichier `gcloud-auth.json` 
+En gros, suis [ce lien là](https://cloud.google.com/docs/authentication/getting-started#linux-or-macos) pour générer ton fichier `credentials.json` 
+
+Pour downloader le service-account.json, va ici:
+
+https://console.cloud.google.com/iam-admin/serviceaccounts/details/101433484924566351027;edit=true/keys?project=memes-traduit
