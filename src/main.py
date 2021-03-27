@@ -1,7 +1,6 @@
 """
 Entry point for the CLi implementation of traduirbot
 """
-
 import sys
 import os
 import facebook
@@ -26,18 +25,19 @@ def main():
     print('fini')
 
 
-def post_on_facebook(file_path):
-    fb_token = Config.get_instance().get_config('FB_ACCES_TOKEN')
-    user_token = Config.get_instance().get_config('FB_USER_TOKEN')
-    page_id = Config.get_instance().get_config('FB_PAGE_ID')
+def post_on_facebook():
+    fb_token = os.environ['FB_ACCESS_TOKEN']
+    user_token = os.environ['FB_USER_TOKEN']
+    page_id = os.environ['FB_PAGE_ID']
 
-    graph = facebook.GraphAPI(access_token=user_token, version="3.0")
+    graph = facebook.GraphAPI(access_token=user_token, version="3.1")
+
+    print(output_path)
 
     graph.put_photo(parent_object=page_id,
                     access_token=fb_token,
-                    image=open(output_path, 'rb'),
-                    message='meme de test')
-
+                    connection_name="feed",
+                    image=open(output_path, 'rb'))
 
 if __name__ == '__main__':
     main()
