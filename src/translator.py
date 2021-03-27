@@ -2,9 +2,9 @@
 
 from google.cloud import translate_v2 as translate
 
-from dictionnary_builder import get_spreadsheet_content
+from dictionnary_builder import get_dict
 
-WORDS_DICTIONNARY = get_spreadsheet_content()
+WORDS_DICTIONNARY = get_dict()
 
 
 def translate_to(source_text, target_lang):

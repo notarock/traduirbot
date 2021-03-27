@@ -5,6 +5,7 @@ import os
 import os.path
 import pickle
 import warnings
+import json
 
 from google.auth.transport.requests import Request
 
@@ -14,6 +15,7 @@ from googleapiclient.discovery import build
 
 # If modifying these scopes, delete the file token.pickle.
 
+words_file = "resources/words.json"
 
 def get_credentials():
     creds = None
@@ -35,7 +37,6 @@ def get_credentials():
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
     return creds
-
 
 def get_spreadsheet_content():
     """
@@ -69,6 +70,19 @@ def get_spreadsheet_content():
     print(word_dict)
     return word_dict
 
+def get_dict():
+    try:
+        content = open(words_file, 'r').read()
+        return json.loads(content)
+    except IOError:
+        dump_to_file()
+        content = open(words_file, 'r').read()
+        return json.loads(content)
+
+def dump_to_file():
+    results = get_spreadsheet_content()
+    with open(words_file, 'w') as outfile:
+        json.dump(results, outfile)
 
 if __name__ == '__main__':
-    get_spreadsheet_content()
+    dump_to_file()
