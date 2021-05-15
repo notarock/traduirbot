@@ -4,6 +4,9 @@ from pyramid.response import Response
 import pprint
 import os
 
+from file_detection import detect
+from image_translator import write_on_image
+
 PORT = 8081
 
 def homepage(request):
@@ -14,10 +17,15 @@ def homepage(request):
 
 def traduir(request):
     request.storage.save(request.POST['meme'])
+    path = request.storage.path(request.POST['meme'].filename)
+    print(path)
+    api_result = detect(path)
+    target_lang = "fr"
+    write_on_image(path, api_result, target_lang, "/tmp/out.png")
 
     _resp = Response()
     _resp.headerlist =  [('Content-type',"image/png; 'charset=UTF-8'")]
-    _resp.body = open(meme,'rb').read()
+    _resp.body = open("/tmp/out.png",'rb').read()
     return _resp
 
 settings = {
