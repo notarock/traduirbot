@@ -16,6 +16,7 @@ google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 environs = "*"
 facebook-sdk = "*"
+pyramid = "*"
 
 [requires]
 python_version = "3.8"
