@@ -13,10 +13,13 @@
     </head>
     <body>
         <h1>upload pour traduir</h1>
-        <form action="/traduir">
+        <form action="/traduir" method="POST" enctype="multipart/form-data" >
             <input type="file"
-                   id="meme" name="meme"
+                   id="meme" 
+                   name="meme"
+                   required="required"
                    accept="image/png, image/jpeg">
+            <input type="submit" value="Submit">
         </form>
     </body>
 </html>

@@ -17,6 +17,8 @@ google-auth-oauthlib = "*"
 environs = "*"
 facebook-sdk = "*"
 pyramid = "*"
+prettyprint = "*"
+pyramid-storage = "*"
 
 [requires]
 python_version = "3.8"
