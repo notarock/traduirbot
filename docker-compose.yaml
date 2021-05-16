@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  traduirbot:
+    build: .
+    ports:
+      - 8081:8081
+    env_file: .env
+    volumes:
+      - "./auth.json:/app/auth.json"
+      - "./credentials.json:/app/credentials.json"

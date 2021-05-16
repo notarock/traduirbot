@@ -15,7 +15,7 @@ def detect(path):
     with io.open(path, 'rb') as image_file:
         image_content = image_file.read()
 
-    image = vision.types.Image(content=image_content)
+    image = vision.Image(content=image_content)
 
     response = vision_client.text_detection(image=image)
     texts = response.text_annotations
