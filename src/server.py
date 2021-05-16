@@ -19,7 +19,7 @@ def traduir(request):
     filename = request.storage.save(request.POST['meme'], randomize=True)
     path = request.storage.path(filename)
     api_result = detect(path)
-    target_lang = "fr"
+    target_lang = request.POST['lang']
     out =  "/tmp/out-" + filename
 
     write_on_image(path, api_result, target_lang, out)
