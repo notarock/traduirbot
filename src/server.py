@@ -16,16 +16,20 @@ def homepage(request):
     return _resp
 
 def traduir(request):
-    request.storage.save(request.POST['meme'])
-    path = request.storage.path(request.POST['meme'].filename)
-    print(path)
+    filename = request.storage.save(request.POST['meme'], randomize=True)
+    path = request.storage.path(filename)
     api_result = detect(path)
     target_lang = "fr"
-    write_on_image(path, api_result, target_lang, "/tmp/out.png")
+    out =  "/tmp/out-" + filename
+
+    write_on_image(path, api_result, target_lang, out)
 
     _resp = Response()
     _resp.headerlist =  [('Content-type',"image/png; 'charset=UTF-8'")]
-    _resp.body = open("/tmp/out.png",'rb').read()
+    _resp.body = open(out,'rb').read()
+    request.storage.delete(path)
+    request.storage.delete(out)
+
     return _resp
 
 settings = {
