@@ -34,7 +34,7 @@ def traduir(request):
 
 settings = {
     'storage.base_path': "/tmp/traduir",
-    'storage.extensions': "images+archives",
+    'storage.extensions': "images",
 }
 
 if __name__ == '__main__':
