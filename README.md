@@ -15,21 +15,12 @@ I would be happy with these for a v1
 - [x] Word dictionnary
   - [x] Ability to replace some words with common words we use
   - [x] Let page admins edit the list, no manual update needed to apply changes
-- [ ] Post to facebook
-  - [x] Post picture on a facebook page
-  - [ ] Have a bank of images to post periodicaly on the page
-  - [ ] Maybe read DMs and send back translated memes?
 
 This will come later, v2 maybe
 
-- [ ] Web interface ?
-  - [ ] Let some users upload pics to translated them instantly
+- [x] Web interface ?
+  - [x] Let some users upload pics to translated them instantly
   - [ ] Password-protected translation API
-- [ ] Archive memes
-  - [ ] Keep translated memes in a user-friendly place
-- [ ] Analytics
-  - [ ] Keep track of text on memes and user engagement
-  - [ ] Keep track of top posts
 - [ ] Text improvement
   - [ ] Figure out text rotation when words are crooked
  
