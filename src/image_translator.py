@@ -14,22 +14,25 @@ FONT_PATH = os.path.join(os.path.dirname(__file__),
                          '../resources/impact.ttf')
 
 
-def write_on_image(filename, detected_text, target_lang, output_file):
+def write_on_image(filename, is_bad, detected_text, target_lang, output_file):
     """
     Take the detected text and translate it word for word, place
     words on the image to "translate" it.
     """
     img = Image.open(filename)
-
     texts = detected_text
-    texts.pop(0)
+
+    if (is_bad):
+        texts.pop(0)
+    else:
+        texts = [detected_text[0]]
 
     for text in texts:
         x_1 = text.bounding_poly.vertices[0].x
         x_2 = text.bounding_poly.vertices[2].x
         y_1 = text.bounding_poly.vertices[0].y
         y_2 = text.bounding_poly.vertices[2].y
-        padding = 5
+        padding = 5 if is_bad else 0
         try:
             rec_left = max(x_1 - padding, 0)
             rec_top = min(y_1 - padding, img.height)
@@ -61,20 +64,24 @@ def write_on_image(filename, detected_text, target_lang, output_file):
             rec_right = min(x_2, img.width)
             rec_bottom = max(y_2, 0)
             area = (x_2 - x_1) * (y_2 - y_1)
-            font_size = round(math.sqrt(area / len(translated)) * 1.25)
+            if is_bad:
+                font_size = round(math.sqrt(area / len(translated)) * 1.25)
+            else:
+                font_size = 24
 
             font = ImageFont.truetype(FONT_PATH, font_size)
 
             # get a drawing context
             draw_context = ImageDraw.Draw(img)
 
-            # draw multiline text
             draw_context.multiline_text((rec_left, rec_top),
                                         translated,
                                         font=font,
                                         fill=WHITE,
                                         stroke_width=1,
                                         stroke_fill=BLACK)
+
+
 
         except:
             print("Unexpected error:", sys.exc_info()[0])
