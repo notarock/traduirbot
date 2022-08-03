@@ -22,7 +22,12 @@ def traduir(request):
     target_lang = request.POST['lang']
     out =  "/tmp/out-" + filename
 
-    write_on_image(path, api_result, target_lang, out)
+    try:
+        badly_translate = request.POST['bad'] == "true"
+    except:
+        badly_translate = False
+
+    write_on_image(path, badly_translate, api_result, target_lang, out)
 
     _resp = Response()
     _resp.headerlist =  [('Content-type',"image/png; 'charset=UTF-8'")]

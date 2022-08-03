@@ -17,7 +17,7 @@ def main():
     api_result = detect(path)
     target_lang = Config.get_instance().get_config('TARGET_LANG')
 
-    write_on_image(path, api_result, target_lang, output_path)
+    write_on_image(path, True, api_result, target_lang, output_path)
 
     # post = sys.argv[2]
     # post_on_facebook(output_path)
