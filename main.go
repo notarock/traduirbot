@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/otiai10/gosseract/v2"
+	"log"
+	ocr "notarock/traduirbot/pkg/OCR"
 )
 
 func main() {
-	client := gosseract.NewClient()
-	defer client.Close()
-	client.SetImage("/app/image.jpg")
-	text, _ := client.Text()
+	c := ocr.New("/tmp/traduir")
+	text, err := c.ReadText("/app/image.jpg")
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Println(text)
 }
