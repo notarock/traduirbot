@@ -12,9 +12,9 @@ func New(path string) OcrClient {
 	}
 }
 
-func (o OcrClient) ReadText(imagePath string) (string, error) {
+func (o OcrClient) ReadText(imagePath string) ([]gosseract.BoundingBox, error) {
 	client := gosseract.NewClient()
 	defer client.Close()
 	client.SetImage(imagePath)
-	return client.Text()
+	return client.GetBoundingBoxes(gosseract.RIL_PARA)
 }

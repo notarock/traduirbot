@@ -7,7 +7,8 @@ RUN apt update \
       ca-certificates \
       libtesseract-dev \
       tesseract-ocr \
-      golang
+      golang \
+      imagemagick
 
 ENV GO111MODULE=on
 ENV GOPATH=${HOME}/go
@@ -15,10 +16,14 @@ ENV PATH=${PATH}:${GOPATH}/bin
 
 WORKDIR /app
 
+COPY image.jpg ./image.jpg
+
+COPY go.mod ./
+
+RUN go mod download
+
 COPY . .
 
-RUN go get -v ./... && go install .
-
-COPY image.jpg /app/image.jpg
+RUN go version
 
 CMD go run main.go
