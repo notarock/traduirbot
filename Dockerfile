@@ -8,8 +8,7 @@ RUN apt update \
       libtesseract-dev \
       tesseract-ocr \
       golang \
-      imagemagick \
-      libmagickwand-dev
+      imagemagick
 
 ENV GO111MODULE=on
 ENV GOPATH=${HOME}/go
@@ -26,6 +25,5 @@ RUN go mod download
 COPY . .
 
 RUN go version
-RUN tesseract --version
 
 CMD go run main.go
