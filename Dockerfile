@@ -16,8 +16,6 @@ ENV PATH=${PATH}:${GOPATH}/bin
 
 WORKDIR /app
 
-COPY image.jpg ./image.jpg
-
 COPY go.mod ./
 
 RUN go mod download
