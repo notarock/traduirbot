@@ -16,6 +16,7 @@ ENV PATH=${PATH}:${GOPATH}/bin
 
 WORKDIR /app
 
+COPY resources ./
 COPY go.mod ./
 
 RUN go mod download

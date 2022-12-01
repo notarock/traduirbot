@@ -17,13 +17,8 @@ func main() {
 		fmt.Printf("%+v", text)
 	}
 
-	i, err := image.ReadFile("/app/images/hat.jpg")
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	t := texts[0]
-	i.CoverText(t, "/app/images/out.jpg")
+	image.CoverText("/app/images/hat.jpg", t, "/app/images/out.png")
 	if err != nil {
 		log.Fatal(err)
 	}
