@@ -1,0 +1,13 @@
+name: Create and publish a Docker image
+run-name: "Publish docker image [${{ github.ref_name }}]"
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  tuyauterie:
+    uses: notarock/tuyauterie/.github/workflows/ImageAutoRelease.yml@main
+    secrets:
+      REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
