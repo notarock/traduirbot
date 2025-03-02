@@ -8,6 +8,7 @@ from file_detection import detect
 from image_translator import write_on_image
 
 PORT = 8081
+PASSWORD = os.environ['PASSWORD']
 
 def homepage(request):
     _resp = Response()
@@ -16,6 +17,12 @@ def homepage(request):
     return _resp
 
 def traduir(request):
+    if request.POST['password'] != PASSWORD:
+        _resp = Response()
+        _resp.headerlist =  [('Content-type',"text/html; 'charset=UTF-8'")]
+        _resp.body = open('src/views/page.html','rb').read()
+        return _resp
+
     filename = request.storage.save(request.POST['meme'], randomize=True)
     path = request.storage.path(filename)
     api_result = detect(path)
