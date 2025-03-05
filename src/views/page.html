@@ -14,15 +14,19 @@
     <body>
         <h1>upload pour traduir</h1>
         <form action="/traduir" method="POST" enctype="multipart/form-data" >
-            <input type="file"
-                   id="meme" 
-                   name="meme"
-                   required="required"
-                   accept="image/png, image/jpeg">
-            <input type="password"
-                   id="password" 
-                   name="password"
-                   required>
+    <label for="meme">Upload Meme:</label>
+    <input type="file"
+           id="meme" 
+           name="meme"
+           required
+           accept="image/png, image/jpeg">
+
+    <label for="password">Password:</label>
+    <input type="password"
+           id="password" 
+           name="password"
+           required>
+
             <select name="lang" id="lang">
                 <option value="fr" selected>Francais</option>
                 <option value="af">Afrikaans</option>
