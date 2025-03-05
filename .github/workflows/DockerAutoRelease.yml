@@ -18,6 +18,6 @@ jobs:
     with:
       version: ${{ needs.release.outputs.version }}
       repository: "notarock/gitops"
-      deployment-path: "traduir/deployment.yaml"
+      deployment-path: "traduir/traduirbot-deployment.yaml"
     secrets:
       gitops-token: ${{ secrets.GITOPS_TOKEN }}
