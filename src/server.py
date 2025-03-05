@@ -17,10 +17,19 @@ def homepage(request):
     return _resp
 
 def traduir(request):
+    if 'password' not in request.POST:
+        _resp.headerlist = [('Content-Type', "text/html; charset=UTF-8")]
+        _resp.body = b"<h1>Error</h1><p>Password is required.</p>"
+        return _resp
+        
     if request.POST['password'] != PASSWORD:
         _resp = Response()
-        _resp.headerlist =  [('Content-type',"text/html; 'charset=UTF-8'")]
-        _resp.body = open('src/views/page.html','rb').read()
+        _resp.headerlist = [('Content-Type', "text/html; charset=UTF-8")]
+        _resp.body = b"""
+            <h1>Error</h1>
+            <p>Wrong password.</p>
+            <a href="javascript:history.back()">Go back</a>
+        """
         return _resp
 
     filename = request.storage.save(request.POST['meme'], randomize=True)
