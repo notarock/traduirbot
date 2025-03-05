@@ -7,7 +7,17 @@ on:
       - "*"
 
 jobs:
-  tuyauterie:
+  release:
     uses: notarock/tuyauterie/.github/workflows/ImageAutoRelease.yml@main
     secrets:
       REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+  rolling-deploy:
+    needs: [release]
+    uses: notarock/tuyauterie/.github/workflows/UpdateDeploymentVersion.yml@main
+    with:
+      version: ${{ needs.release.outputs.version }}
+      repository: "notarock/gitops"
+      deployment-path: "traduir/deployment.yaml"
+    secrets:
+      gitops-token: ${{ secrets.GITOPS_TOKEN }}
