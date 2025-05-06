@@ -1,7 +1,6 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
-import pprint
 import os
 
 from file_detection import detect
