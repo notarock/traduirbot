@@ -16,13 +16,13 @@ def homepage(request):
     return _resp
 
 def traduir(request):
+    _resp = Response()
     if 'password' not in request.POST:
         _resp.headerlist = [('Content-Type', "text/html; charset=UTF-8")]
         _resp.body = b"<h1>Error</h1><p>Password is required.</p>"
         return _resp
         
     if request.POST['password'] != PASSWORD:
-        _resp = Response()
         _resp.headerlist = [('Content-Type', "text/html; charset=UTF-8")]
         _resp.body = b"""
             <h1>Error</h1>

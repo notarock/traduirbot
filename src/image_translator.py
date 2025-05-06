@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import math
-import sys
 import os
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -42,12 +41,10 @@ def write_on_image(filename, detected_text, target_lang, output_file):
             for i in range(10):
                 img_ctx = img_ctx.filter(ImageFilter.BLUR)
             img.paste(img_ctx, box)
-        except:
-            print("Unexpected error:", sys.exc_info()[0])
+        except Exception as e:
+            print(f"Unexpected error: {e}")
     for text in texts:
         translated = translate_to(text.description, target_lang)
-        vertices = (['({},{})'.format(vertex.x, vertex.y)
-                     for vertex in text.bounding_poly.vertices])
 
         x_1 = text.bounding_poly.vertices[0].x
         x_2 = text.bounding_poly.vertices[2].x
@@ -76,8 +73,8 @@ def write_on_image(filename, detected_text, target_lang, output_file):
                                         stroke_width=1,
                                         stroke_fill=BLACK)
 
-        except:
-            print("Unexpected error:", sys.exc_info()[0])
+        except Exception as e:
+            print(f"Unexpected error: {e}")
 
     print("Saved image to " + output_file)
     img.save(output_file, "PNG")
