@@ -23,9 +23,10 @@ jobs:
           pip install pipenv
           pipenv install --dev
 
-      - name: Run linting
+      - name: Install & run Ruff
         run: |
-          pipenv run ruff check .
+          pip install ruff
+          ruff check .
 
       - name: Run tests
         run: |
