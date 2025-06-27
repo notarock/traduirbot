@@ -12,6 +12,6 @@ release:
 
 deploy:
   gitops:
-    enable: false
+    enable: true
     repository: "notarock/gitops"
-    manifest: "traduirbot/deployment.yaml"
+    manifest: "traduir/traduirbot-deployment.yaml"
