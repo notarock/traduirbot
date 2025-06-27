@@ -1,0 +1,22 @@
+name: Tuyauterie
+on:
+  push:
+  pull_request:
+  release:
+  workflow_dispatch:
+  schedule:
+    - cron: '26 10 * * 3' # At 10:30 on Tuesdays
+
+permissions:
+  packages: write
+  contents: read
+  id-token: write
+
+jobs:
+  main:
+    uses: notarock/tuyauterie/.github/workflows/tuyauterie.yml@main
+    with:
+      tuyauterie-path: .tuyauterie.yaml
+      github-event: ${{ github.event_name }}
+    secrets:
+      GITOPS_REPOSITORY_TOKEN: "${{ secrets.GITOPS_TOKEN }}"
