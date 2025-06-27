@@ -34,9 +34,9 @@ This will come later, v2 maybe
   - [ ] Figure out text rotation when words are crooked
  
 
-# Anglais (yeet)
+# Anglais
 
-It translate
+It translate a meme in a funny way. Write over the original images 
 
 ### How to make this work
 
