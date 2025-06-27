@@ -1,7 +1,6 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
-import pprint
 import os
 
 from file_detection import detect
@@ -17,13 +16,13 @@ def homepage(request):
     return _resp
 
 def traduir(request):
+    _resp = Response()
     if 'password' not in request.POST:
         _resp.headerlist = [('Content-Type', "text/html; charset=UTF-8")]
         _resp.body = b"<h1>Error</h1><p>Password is required.</p>"
         return _resp
         
     if request.POST['password'] != PASSWORD:
-        _resp = Response()
         _resp.headerlist = [('Content-Type', "text/html; charset=UTF-8")]
         _resp.body = b"""
             <h1>Error</h1>
@@ -40,7 +39,6 @@ def traduir(request):
 
     write_on_image(path, api_result, target_lang, out)
 
-    _resp = Response()
     _resp.headerlist =  [('Content-type',"image/png; 'charset=UTF-8'")]
     _resp.body = open(out,'rb').read()
     request.storage.delete(path)

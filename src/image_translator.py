@@ -42,12 +42,10 @@ def write_on_image(filename, detected_text, target_lang, output_file):
             for i in range(10):
                 img_ctx = img_ctx.filter(ImageFilter.BLUR)
             img.paste(img_ctx, box)
-        except:
+        except Exception:
             print("Unexpected error:", sys.exc_info()[0])
     for text in texts:
         translated = translate_to(text.description, target_lang)
-        vertices = (['({},{})'.format(vertex.x, vertex.y)
-                     for vertex in text.bounding_poly.vertices])
 
         x_1 = text.bounding_poly.vertices[0].x
         x_2 = text.bounding_poly.vertices[2].x
@@ -76,7 +74,7 @@ def write_on_image(filename, detected_text, target_lang, output_file):
                                         stroke_width=1,
                                         stroke_fill=BLACK)
 
-        except:
+        except Exception:
             print("Unexpected error:", sys.exc_info()[0])
 
     print("Saved image to " + output_file)
