@@ -314,12 +314,12 @@
         },
         "environs": {
             "hashes": [
-                "sha256:ed2767588deb503209ffe4dd9bb2b39311c2e4e7e27ce2c64bf62ca83328d068",
-                "sha256:f8fb3d6c6a55872b0c6db077a28f5a8c7b8984b7c32029613d44cef95cfc0812"
+                "sha256:972246695a2ddf8f30205ec9b994ffb2ed6b742e18731b8ed5766e7f67bbb085",
+                "sha256:fae1b56d88eab5708e5f3944b33375faf719ab8bced3e9dbd6f530dfbbe37dde"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==14.6.0"
+            "version": "==15.0.0"
         },
         "facebook-sdk": {
             "hashes": [
@@ -594,11 +594,11 @@
         },
         "marshmallow": {
             "hashes": [
-                "sha256:3e3fef6b3603721a25a723b8caedfa488369bddaf9bc03b40b9442c90aebd22b",
-                "sha256:c84fd89817ecea690bde1eb925036070e5e9883148217585adc56d5cfbc082b8"
+                "sha256:46c4fe6984707e3cbd485dfebbf0a59874f58d695aad05c1668d15e8c6e13b46",
+                "sha256:fb43c53b3fe240b8f6af37223d6ef1636f927ad9bea8ab323afad95dff090880"
             ],
             "markers": "python_version >= '3.10'",
-            "version": "==4.2.3"
+            "version": "==4.3.0"
         },
         "oauthlib": {
             "hashes": [
