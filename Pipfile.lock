@@ -377,20 +377,20 @@
         },
         "google-cloud-core": {
             "hashes": [
-                "sha256:67d977b41ae6c7211ee830c7912e41003ea8194bff15ae7d72fd6f51e57acabc",
-                "sha256:7c1b7ef5c92311717bd05301aa1a91ffbc565673d3b0b4163a52d8413a186963"
+                "sha256:3dc94bdec9d05a31d9f355045ed0f369fbc0d8c665076c734f065d729800f811",
+                "sha256:ea62cdf502c20e3e14be8a32c05ed02113d7bef454e40ff3fab6fe1ec9f1f4e7"
             ],
-            "markers": "python_version >= '3.7'",
-            "version": "==2.5.0"
+            "markers": "python_version >= '3.9'",
+            "version": "==2.5.1"
         },
         "google-cloud-storage": {
             "hashes": [
-                "sha256:78cfeae7cac2ca9441d0d0271c2eb4ebfa21aa4c6944dd0ccac0389e81d955a7",
-                "sha256:cc67952dce84ebc9d44970e24647a58260630b7b64d72360cedaf422d6727f28"
+                "sha256:97db9aa4460727982040edd2bd13ff3d5e2260b5331ad22895802da1fc2a5286",
+                "sha256:a72f656759b7b99bda700f901adcb3425a828d4a29f911bc26b3ea79c5b1217f"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.7'",
-            "version": "==3.8.0"
+            "markers": "python_version >= '3.10'",
+            "version": "==3.10.1"
         },
         "google-cloud-translate": {
             "hashes": [
@@ -451,11 +451,11 @@
         },
         "google-resumable-media": {
             "hashes": [
-                "sha256:dd14a116af303845a8d932ddae161a26e86cc229645bc98b39f026f9b1717582",
-                "sha256:f1157ed8b46994d60a1bc432544db62352043113684d4e030ee02e77ebe9a1ae"
+                "sha256:82b6d8ccd11765268cdd2a2123f417ec806b8eef3000a9a38dfe3033da5fb220",
+                "sha256:f3354a182ebd193ae3f42e3ef95e6c9b10f128320de23ac7637236713b1acd70"
             ],
-            "markers": "python_version >= '3.7'",
-            "version": "==2.8.0"
+            "markers": "python_version >= '3.9'",
+            "version": "==2.8.2"
         },
         "googleapis-common-protos": {
             "extras": [
