@@ -403,12 +403,12 @@
         },
         "google-cloud-vision": {
             "hashes": [
-                "sha256:8c661bc0e7a6bd3d03a1a645b977af24ae3f21ccf3df8e213298659fd0d40813",
-                "sha256:f99b83af7588d30e708b87e09ff73e43e380497fe82c799b9f05e03f310027c8"
+                "sha256:680f668d331858a3340eac41b732903d30dc69ed08020ffd1d5ca32580bdf546",
+                "sha256:f6979e93ad60a7e556b152de2857f7d3b9b740afd022cea1c76548ef80c29b87"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.7'",
-            "version": "==3.12.1"
+            "markers": "python_version >= '3.9'",
+            "version": "==3.13.0"
         },
         "google-crc32c": {
             "hashes": [
